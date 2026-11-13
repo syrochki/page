@@ -8,5 +8,5 @@
 
 ## License
 
-The source code is licensed under MIT.
+The source code is licensed under [MIT](https://github.com/syrochki/page/blob/main/LICENSE).
 The content is licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
