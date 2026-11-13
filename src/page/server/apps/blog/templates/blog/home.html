@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Жопа{% endblock %}
+
+{% block content %}
+  <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight">Лента</h1>
+      <p class="mt-1 text-slate-600">Заметки и статьи</p>
+    </div>
+
+    <form hx-get="{% url 'blog:home' %}"
+          hx-target="#post-list"
+          hx-push-url="true"
+          class="flex gap-2">
+      <input type="search" name="q" value="{{ q }}"
+             placeholder="Поиск…"
+             class="w-full border border-slate-300 px-3 py-2 text-sm sm:w-56">
+      <button type="submit"
+              class="btn">
+        Найти
+      </button>
+    </form>
+  </div>
+
+  <div id="post-list">
+    {% include "partials/post_list.html" %}
+  </div>
+{% endblock %}

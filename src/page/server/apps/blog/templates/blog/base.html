@@ -1,0 +1,27 @@
+{% load static django_htmx %}
+{% load static tailwind_tags %}
+<!doctype html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Sutuuu{% endblock %}</title>
+  {% tailwind_css %}
+  {% htmx_script %}
+  <script defer src="{% static 'js/alpine.min.js' %}"></script>
+</head>
+
+<body class="min-h-full bg-slate-50 text-slate-800 antialiased" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  {% include "components/navbar.html" %}
+
+  <main class="mx-auto max-w-3xl px-4 py-10">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
+    © {% now "Y" %} Timofei Zykov
+  </footer>
+</body>
+
+</html>

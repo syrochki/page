@@ -1,0 +1,34 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }} · Блог{% endblock %}
+
+{% block content %}
+  <article class="prose prose-slate max-w-none">
+    <h1>{{ post.title }}</h1>
+    <p class="text-sm text-slate-500">{{ post.created_at|date:"d E Y" }}</p>
+    <div class="mt-6 whitespace-pre-wrap">{{ post.body }}</div>
+  </article>
+
+  <section class="mt-12 border-t border-slate-200 pt-8">
+    <h2 class="mb-4 text-lg font-semibold">Комментарии</h2>
+
+    <div id="comments">
+      {% include "partials/comment_list.html" %}
+    </div>
+
+    <form class="mt-6 space-y-3"
+          hx-post="{% url 'blog:add_comment' post.slug %}"
+          hx-target="#comments"
+          hx-swap="innerHTML">
+      {% csrf_token %}
+      <input name="author_name" required placeholder="Имя"
+             class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+      <textarea name="body" required rows="3" placeholder="Комментарий"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></textarea>
+      <button type="submit"
+              class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+        Отправить
+      </button>
+    </form>
+  </section>
+{% endblock %}
