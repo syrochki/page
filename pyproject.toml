@@ -1,0 +1,77 @@
+[project]
+name = "page"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Timofei Zykov", email = "timzykov@proton.me" }
+]
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "django>=6.1.2",
+    "django-alpine>=0.1.4",
+    "django-csp>=4.0",
+    "django-htmx>=1.29.0",
+    "django-stubs-ext>=6.1.2",
+    "django-tailwind>=4.6.0",
+    "unidecode>=1.4.0",
+    "whitenoise>=6.12.0",
+]
+
+[project.scripts]
+page = "page.manage:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    { include-group = "lint" },
+    { include-group = "test" },
+    "django-tailwind[cookiecutter,honcho,reload]>=4.6.0",
+]
+lint = [
+    "django-stubs[compatible-mypy]>=6.1.2",
+    "mypy>=2.4.0",
+    "ruff>=0.17.0",
+]
+test = [
+    "pytest-django[django]>=4.14.0",
+]
+
+[tool.django-stubs]
+django_settings_module = "page.server.settings"
+
+[tool.mypy]
+strict = true
+plugins = ["mypy_django_plugin.main"]
+exclude = [
+    "migrations",
+    ".venv",
+    ".mypy_cache",
+    ".ruff_cache",
+    "build",
+    "dist",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "annotated_types.*",
+    "msgspec.*",
+    "health_check.*",
+]
+
+[tool.ruff]
+exclude = [
+    "migrations",
+    ".venv",
+    ".mypy_cache",
+    ".ruff_cache",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]

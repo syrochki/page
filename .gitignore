@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.out
+
+# Virtual environments
+.venv
+.env
+
+# os artifacts
+.DS_Store
+
+# dev
+.vscode
+.idea
+.zed
+.swap
+migrations/
+
+# db
+db.sqlite3
+
+# JS-generated files
+node_modules/
