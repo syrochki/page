@@ -8,7 +8,7 @@ help: ## Show this help
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
 
 rundev: ## Run Django development server
-	uv run page collectstatic --no-input && uv run runserver
+	uv run page collectstatic --no-input && uv run page runserver
 
 build: ## Just make docker build
 	docker compose build
