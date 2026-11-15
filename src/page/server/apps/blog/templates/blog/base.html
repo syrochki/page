@@ -1,18 +1,21 @@
 {% load static django_htmx %}
 {% load static tailwind_tags %}
 <!doctype html>
-<html lang="ru" class="h-full">
+<html lang="ru" class="h-full" data-theme="cupcake">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Sutuuu{% endblock %}</title>
+  <title>{% block title %}timzykov's page{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
   {% tailwind_css %}
   {% htmx_script %}
   <script defer src="{% static 'js/alpine.min.js' %}"></script>
 </head>
 
-<body class="min-h-full bg-slate-50 text-slate-800 antialiased" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
   {% include "components/navbar.html" %}
 
   <main class="mx-auto max-w-3xl px-4 py-10">

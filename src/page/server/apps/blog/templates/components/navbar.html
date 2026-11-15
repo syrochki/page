@@ -1,17 +1,15 @@
-<header class="border-b border-slate-200 bg-white" x-data="{ open: false }">
-  <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
-    <a href="{% url 'blog:home' %}" class="text-lg font-bold text-indigo-600">Блог</a>
+<header>
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar-start">
+      <a href="{% url 'blog:home' %}" class="btn btn-ghost text-xl">timzykov.me</a>
+    </div>
 
-    <button type="button" class="sm:hidden" @click="open = !open" aria-label="Меню">
-      <span class="text-xl">☰</span>
-    </button>
+    <div class="navbar-end">
+      <ul class="menu menu-horizontal px-1">
+        {% comment %} <li><a class="btn" href="{% url 'blog:home' %}">Лента</a></li> {% endcomment %}
+      </ul>
 
-    <nav class="hidden gap-6 text-sm font-medium sm:flex">
-      <a href="{% url 'blog:home' %}" class="hover:text-indigo-600">Лента</a>
-    </nav>
+    </div>
+
   </div>
-
-  <nav class="border-t border-slate-100 px-4 py-3 sm:hidden" x-show="open" x-transition>
-    <a href="{% url 'blog:home' %}" class="block py-2">Лента</a>
-  </nav>
 </header>
